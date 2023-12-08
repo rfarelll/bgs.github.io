@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Text File</title>
+</head>
+<body>
+
+    <h1>Download Text File</h1>
+
+    <p>Click the button below to download a sample text file:</p>
+
+    <button onclick="downloadTxtFile()">Download Text File</button>
+
+    <script>
+        function downloadTxtFile() {
+            // Text content for the file
+            var textContent = "This is a sample text file content.";
+
+            // Create a Blob containing the text content
+            var blob = new Blob([textContent], { type: "text/plain" });
+
+            // Create a link element
+            var link = document.createElement("a");
+
+            // Set the download attribute and create a URL for the Blob
+            link.download = "sample.txt";
+            link.href = window.URL.createObjectURL(blob);
+
+            // Append the link to the document
+            document.body.appendChild(link);
+
+            // Trigger a click on the link to start the download
+            link.click();
+
+            // Remove the link from the document
+            document.body.removeChild(link);
+        }
+    </script>
+
+</body>
+</html>
